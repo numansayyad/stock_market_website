@@ -1,0 +1,92 @@
+/* MAIN CONTAINER (Perfect Center + Width Same as Zerodha) */
+.brokerage-container {
+  width: 82%;
+  margin: auto;
+  margin-top: 50px;
+  font-family: sans-serif;
+}
+
+/* ---------------------- */
+/*         TABS           */
+/* ---------------------- */
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 5px;
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  font-size: 28px;
+  padding-bottom: 12px;
+  cursor: pointer;
+  color: #6d6d6d;
+  font-weight: 400;
+}
+
+.tabs button.active {
+  color: #1c7ed6;
+  border-bottom: 3px solid #1c7ed6;
+}
+
+/* ---------------------- */
+/*        TABLE BOX       */
+/* ---------------------- */
+
+.table-box {
+  margin-top: 25px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* HEADER */
+thead th {
+  text-align: center;
+  background: #fafafa;
+  padding: 18px;
+  font-size: 17px;
+  font-weight: 600;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+/* ROWS */
+tbody td {
+  padding: 22px 18px;
+  border-bottom: 1px solid #ececec;
+  font-size: 15.5px;
+  vertical-align: top;
+  line-height: 1.55;
+  color: #444;
+}
+
+/* LAST ROW BORDER FIX */
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* FIRST COLUMN FIX */
+tbody td:first-child {
+  width: 230px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* BULLET LIST FIX */
+td ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+td li {
+  margin-bottom: 6px;
+}
