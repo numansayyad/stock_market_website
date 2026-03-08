@@ -1,5 +1,5 @@
 /* MAIN WRAPPER */
-.signup-wrapper {
+.login-wrapper {
   width: 85%;
   margin: 80px auto;
   display: flex;
@@ -10,7 +10,7 @@
 /**************************
  LEFT SIDE SECTION
 **************************/
-.signup-left {
+.login-left {
   flex: 1.2;
 }
 
@@ -27,7 +27,7 @@
   margin-bottom: 40px;
 }
 
-.signup-left-img {
+.login-left-img {
   width: 90%;
   margin-top: 20px;
 }
@@ -35,7 +35,7 @@
 /**************************
  RIGHT SIDE FORM
 **************************/
-.signup-right {
+.login-right {
   flex: 0.8;
   padding: 30px 40px;
 }
@@ -72,42 +72,8 @@
   box-shadow: 0 0 0 2px rgba(56, 126, 209, 0.1);
 }
 
-/* MOBILE INPUT ROW */
-.mobile-row {
-  display: flex;
-  border: 1px solid #cfcfcf;
-  border-radius: 6px;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-
-.flag-box {
-  background: #f1f1f1;
-  padding: 14px;
-  font-size: 16px;
-  border-right: 1px solid #ccc;
-}
-
-.mobile-input {
-  flex: 1;
-  padding: 14px;
-  border: none;
-  outline: none;
-  font-size: 16px;
-}
-
-/* OTP INPUT */
-.otp-input-box {
-  width: 100%;
-  padding: 14px;
-  border: 1px solid #cfcfcf;
-  border-radius: 6px;
-  margin-bottom: 20px;
-  font-size: 16px;
-}
-
-/* BUTTON */
-.otp-btn {
+/* LOGIN BUTTON */
+.login-btn {
   width: 100%;
   padding: 14px;
   font-size: 18px;
@@ -119,23 +85,32 @@
   margin-bottom: 20px;
 }
 
-.otp-btn:hover {
+.login-btn:hover {
   background: #1f5faa;
 }
 
 /* LINKS */
-.change-btn {
-  background: none;
-  border: none;
-  color: #387ed1;
-  cursor: pointer;
+.login-footer-text {
+  text-align: center;
+  margin-bottom: 20px;
   font-size: 15px;
-  margin-top: 5px;
+  color: #333;
+}
+
+.login-link {
+  color: #387ed1;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-link:hover {
+  text-decoration: underline;
 }
 
 .terms {
   font-size: 14px;
   color: #666;
+  text-align: center;
 }
 
 .terms a {
@@ -163,5 +138,31 @@
   margin-bottom: 15px;
   font-size: 14px;
   text-align: center;
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 768px) {
+  .login-wrapper {
+    flex-direction: column;
+    width: 95%;
+    margin-top: 60px;
+  }
+
+  .login-left {
+    display: none;
+  }
+
+  .login-right {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .big-title {
+    font-size: 24px;
+  }
+
+  .form-title {
+    font-size: 22px;
+  }
 }
 

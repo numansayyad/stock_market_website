@@ -2,18 +2,55 @@ import React, { useState } from "react";
 import "./Signup.css";
 
 function Signup() {
-  const [step, setStep] = useState(1);
-  const [mobile, setMobile] = useState("");
-  const [otp, setOtp] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
 
-  const handleNext = () => {
-    if (mobile.length === 10) setStep(2);
-    else alert("Enter valid 10-digit mobile number");
-  };
+  const handleSignup = async () => {
+    setError("");
 
-  const handleVerify = () => {
-    if (otp.length === 6) alert("Signup completed!");
-    else alert("Enter valid 6-digit OTP");
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
+    // Validate password
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters");
+      return;
+    }
+
+    // Validate password match
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3002/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSuccess(true);
+        alert("Signup successful! You can now login.");
+      } else {
+        setError(data.message || "Signup failed. Please try again.");
+      }
+    } catch (err) {
+      setError("Server error. Please try again later.");
+      console.error("Signup error:", err);
+    }
   };
 
   return (
@@ -37,26 +74,61 @@ function Signup() {
 
       {/* RIGHT SIDE FORM */}
       <div className="signup-right">
-
-        {step === 1 && (
+        {success ? (
+          <>
+            <h2 className="form-title">Signup Successful!</h2>
+            <p className="track-text">You can now login with your email and password.</p>
+            <button 
+              className="otp-btn" 
+              onClick={() => window.location.href = "/login"}
+            >
+              Go to Login
+            </button>
+          </>
+        ) : (
           <>
             <h2 className="form-title">Signup now</h2>
-            <p className="track-text">Or track your existing application</p>
+            <p className="track-text">Create an account with your email and password</p>
 
-            {/* MOBILE INPUT ROW */}
-            <div className="mobile-row">
-              <span className="flag-box">🇮🇳 +91</span>
-
+            {/* EMAIL INPUT */}
+            <div className="input-group">
               <input
-                type="number"
-                placeholder="Enter your mobile number"
-                value={mobile}
-                onChange={(e) => setMobile(e.target.value)}
-                className="mobile-input"
+                type="email"
+                placeholder="Enter your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="form-input"
               />
             </div>
 
-            <button className="otp-btn" onClick={handleNext}>Get OTP</button>
+            {/* PASSWORD INPUT */}
+            <div className="input-group">
+              <input
+                type="password"
+                placeholder="Create a password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="form-input"
+              />
+            </div>
+
+            {/* CONFIRM PASSWORD INPUT */}
+            <div className="input-group">
+              <input
+                type="password"
+                placeholder="Confirm your password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="form-input"
+              />
+            </div>
+
+            {/* ERROR MESSAGE */}
+            {error && <p className="error-message">{error}</p>}
+
+            <button className="otp-btn" onClick={handleSignup}>
+              Signup
+            </button>
 
             <p className="terms">
               By proceeding, you agree to the Zerodha 
@@ -64,34 +136,10 @@ function Signup() {
             </p>
           </>
         )}
-
-        {/* STEP 2 → OTP VERIFICATION */}
-        {step === 2 && (
-          <>
-            <h2 className="form-title">Verify OTP</h2>
-            <p className="track-text">OTP sent to +91 {mobile}</p>
-
-            <input
-              type="number"
-              placeholder="Enter 6-digit OTP"
-              value={otp}
-              onChange={(e) => setOtp(e.target.value)}
-              className="otp-input-box"
-            />
-
-            <button className="otp-btn" onClick={handleVerify}>
-              Verify OTP
-            </button>
-
-            <button className="change-btn" onClick={() => setStep(1)}>
-              Change mobile number
-            </button>
-          </>
-        )}
-
       </div>
     </div>
   );
 }
 
 export default Signup;
+
