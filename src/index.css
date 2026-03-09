@@ -29,3 +29,53 @@ body {
     color: #387ed1 !important;
 }
 
+/* Header Navigation Links - Fixed Position with Animation */
+.header-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px !important;
+}
+
+.header-link {
+  font-family: 'Poppins', 'Montserrat', 'Raleway', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: #666666 !important;
+  text-decoration: none !important;
+  padding: 8px 12px !important;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+.header-link::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background: linear-gradient(90deg, #387ed1, #00a3e0);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.header-link:hover {
+  color: #387ed1 !important;
+  transform: translateY(-2px);
+}
+
+.header-link:hover::before {
+  width: 80%;
+}
+
+.header-link:active {
+  transform: translateY(0);
+}
+
+.header-link:focus {
+  color: #387ed1 !important;
+  outline: none;
+}
+

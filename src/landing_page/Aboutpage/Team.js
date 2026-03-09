@@ -21,7 +21,7 @@ function Team() {
                 {/* IMAGE LEFT */}
                 <div className="col-md-4 text-center mb-4">
                     <img
-                        src="media/WhatsApp Image 2025-12-10 at 22.21.45_39420195.jpg"  // Change your image path here
+                        src="media/numan.jpeg"  // Change your image path here
                         alt="Numan Sayyad"
                         className="img-fluid"
                         style={{
