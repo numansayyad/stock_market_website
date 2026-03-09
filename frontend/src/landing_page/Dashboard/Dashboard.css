@@ -1,0 +1,33 @@
+.dashboard-container {
+  width: 100%;
+  height: calc(100vh - 60px);
+  margin-top: 60px;
+  background-color: #f5f5f5;
+}
+
+.dashboard-iframe {
+  background-color: #fff;
+}
+
+/* Hide default navbar when in dashboard iframe mode */
+/* This helps when the dashboard loads as an iframe */
+.dashboard-wrapper {
+  display: none;
+}
+
+body.dashboard-mode .navbar {
+  display: none;
+}
+
+body.dashboard-mode .footer {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-container {
+    margin-top: 50px;
+    height: calc(100vh - 50px);
+  }
+}
+

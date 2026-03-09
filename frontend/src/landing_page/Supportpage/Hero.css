@@ -1,0 +1,62 @@
+.support-hero {
+  background: #f7f7f7;
+  padding: 110px 0 70px 0;
+  width: 100%;
+}
+
+.support-header {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.support-header h1 {
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0;
+  color: #222;
+}
+
+/* MY TICKETS BUTTON */
+.ticket-btn {
+  background: #387ed1;
+  color: white;
+  padding: 10px 22px;
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.ticket-btn:hover {
+  background: #2f6ab3;
+}
+
+/* SEARCH BOX */
+.search-box {
+  width: 80%;
+  margin: 35px auto 0 auto;
+  background: white;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+}
+
+.search-icon {
+  font-size: 20px;
+  margin-right: 14px;
+  opacity: 0.6;
+}
+
+.search-box input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 17px;
+  color: #444;
+}
